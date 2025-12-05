@@ -1,7 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<!--
+HTML code built referencing the following sources:
+
+Kevin Powell: Create Accessible Tabs with HTML, CSS & JS
+https://www.youtube.com/watch?v=fI9VM5zzpu8
+-->
+
+<head>
+    <meta charset=""UTF-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiorelli Wong's Mechatronics Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="mech_style.css">
+    <script src="mech_script.js" defer></script>
+</head>
+
 <body>
-<h1>Fiorelli Wong's Mechatronics Portfolio</h1>
-<p>Welcome to my portfolio for DSGN 297!</p>
+    <h1 class="mainTitle">Fiorelli Wong's Mechatronics Portfolio</h1>
+    <p class="introSubtitle">Welcome to my mechatronics (DSGN 297) portfolio!</p>
+ 
+    <div class="wrapper">
+        <h2 id="tabs-title">Project Journey</h2>
+        <div class="tabs-container">
+            <ul aria-labelledby="tabs-title">
+                <li><a id="tab-1" href="#final"> Final Project </a></li>
+                <li><a id="tab-2" href="#coursework"> Course Work </a></li>
+            </ul>
+
+            <div class=""tabs__panels flow">
+                <div id="final" aria-labelledby="tab-1">
+                    <p>Here are the specifications for the final.</p>
+                </div>
+                <div id="coursework" aria-labelledby="tab-2">
+                    <p>Here are the details for all work over the quarter.</p>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+<!--
+An image or video of a demonstration of your device
+A block diagram showing the interaction
+A circuit diagram
+A link to or the full code
+A sketch showing the evolution of the idea to the final design    
+-->
+
 </body>
 </html>
