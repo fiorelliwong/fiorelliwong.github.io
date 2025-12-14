@@ -24,6 +24,9 @@ https://www.youtube.com/watch?v=fI9VM5zzpu8
     </div>
     <div class="mainContent">
     <h2 class="tabsTitle">Project Journey</h2>
+    <p>My project is a smart mirror that reacts to user input through various sensors. Users can primarily control
+        the 
+    </p>
     <div class="wrapper">
         <div class="tab">
             <button class="tablinks" onclick="openCity(event, 'demo')" id="defaultOpen">Demo</button>
@@ -40,31 +43,111 @@ https://www.youtube.com/watch?v=fI9VM5zzpu8
 
             <div class="tabs__panels flow">
                 <div id="demo" class="tabcontent">
-                    <p>Final Demo Video and Wiring Image.</p>
-                    <!-- <iframe src="https://youtu.be/MHUbzqfUzGY" referrerpolicy="no-referrer-when-downgrade" title="final_demo">Your browser does not support iframe.</iframe> -->
-                     <video width="320" height="240" controls>
-                        <source src="resources/video.MOV" type="video/mov">
-                        Your browser does not support the video tag.
-                    </video>
+                    <p>This is the final demo video of the functionality of the smart mirror.</p>
+                    <a href="https://youtu.be/MHUbzqfUzGY">Link to final demo here.</a>
+                    <p>This is an image of the final setup and wiring.</p>
                     <img src="resources/demo.JPG" alt="Image of final breadboard and wiring.">
                 </div>
                 <div id="block-diagram" class="tabcontent">
-                    <p>Block diagram of interactions with final project.</p>
+                    <p>This is a block diagram describing all interactions a user can have with the various components of the mirror.</p>
                     <img src="resources/block.jpg" alt="Image of block diagram">
                 </div>
                 <div id="circuit-diagram" class="tabcontent">
-                    <p>Circuit Diagram of final wiring.</p>
+                    <p>This is a circuit Diagram of final wiring.</p>
                     <img src="resources/circuit.jpg" alt="Circuit Diagram">
                 </div>
                 <div id="full-code" class="tabcontent">
                     <p>Full Code of final project.</p>
-                    <code>
-                        <iframe src="resources/code.py" title="final_code" height="600px">Your browser does not support iframe.</iframe>
-                    </code>
+                    <pre>
+                        import time
+                        import board
+                        import busio
+
+                        import digitalio
+                        import pwmio
+                        from analogio import AnalogIn
+
+                        import adafruit_hcsr04
+                        from adafruit_motor import servo
+
+                        import neopixel
+                        import adafruit_mpu6050 
+
+                        # potentiometer
+                        potentiometerpin = AnalogIn(board.A0)
+
+                        # button
+                        buttonpin = digitalio.DigitalInOut(board.GP16)
+                        buttonpin.direction = digitalio.Direction.INPUT
+                        buttonpin.pull = digitalio.Pull.UP
+
+                        # sonar
+                        sonar = adafruit_hcsr04.HCSR04(trigger_pin=board.GP15, echo_pin=board.GP14)
+
+                        # servo
+                        pwm = pwmio.PWMOut(board.GP9, duty_cycle = 0, frequency = 50)
+                        servo = servo.Servo(pwm)
+
+                        # accelerometer
+                        i2c = busio.I2C(board.GP11, board.GP10) # the I2C pins used, (SCL, SDA)
+                        mpu = adafruit_mpu6050.MPU6050(i2c)
+                        mpu.accelerometer_range = adafruit_mpu6050.Range.RANGE_2_G 
+                        mpu.gyro_range = adafruit_mpu6050.GyroRange.RANGE_250_DPS 
+
+                        # neopixels
+                        din_pin = board.GP13 # the pin connected to the neopixel DIN
+                        num_pixels = 28 # how many neopixels in the strip
+                        ORDER = neopixel.GRB
+                        pixels = neopixel.NeoPixel(din_pin, num_pixels, brightness=0.1, auto_write=False,
+                        pixel_order=ORDER)
+                        pixels.fill((0, 0, 0))
+                        pixels.show()
+                        def translate_to_rgb(number):
+                            return ((number + 16)/32)*255
+
+                        times_pressed = 0
+                        button = 1
+                        old_button = 1
+
+                        while 1:
+                            button = buttonpin.value 
+                            # read PWM for servo
+                            pot_value = potentiometerpin.value # range: 0 - 65535
+                            servo.angle = int((180 / 65535) * pot_value)
+                            if (button == 0 and old_button == 1):
+                                if (times_pressed == 0):
+                                    print("On")
+                                    times_pressed = 1
+                                elif (times_pressed == 1):
+                                    print("Off")
+                                    for i in range(28):
+                                        pixels[i] = (0, 0, 0)
+                                    pixels.show()
+                                    times_pressed = 0
+
+                            if times_pressed == 1: # when on
+                                # read sonar
+                                try: 
+                                    son_dist = sonar.distance
+                                    brightness = 1 - (son_dist / 40)
+                                    color = (translate_to_rgb(mpu.acceleration[0]) * brightness,
+                                            translate_to_rgb(mpu.acceleration[1]) * brightness, 
+                                            translate_to_rgb(mpu.acceleration[2]) * brightness)
+                                    for i in range(28):
+                                        pixels[i] = color
+                                    pixels.show()
+                                except RuntimeError:
+                                    print("Retrying!")
+                                    
+
+                            old_button = button
+                            time.sleep(0.01)
+                    </pre>
                 </div>
                 <div id="sketch" class="tabcontent">
-                    <p>Sketch of what final project should look like.</p>
+                    <p>This is an initial sketch of what I envisioned the mirror to look like initially.</p>
                     <img src="resources/initial.jpg" alt="Image of initial sketch">
+                    <p>This is the final sketch of what the smart mirror should look like.</p>
                     <img src="resources/sketch_front.jpg" alt="Image of final sketch">
                 </div>
             </div>
