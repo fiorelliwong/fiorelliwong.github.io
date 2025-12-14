@@ -1,7 +1,23 @@
 .wrapper{
-    display: flex;
     justify-content: left;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 200px;
+    margin-right: 200px;
     margin-bottom: 20px;
 }
+
+.header {
+    justify-content: center;
+    margin-top: 50px;
+}
+.tabs-title{
+    align-items: center;
+}
+
+.mainTitle {
+    text-align: center;
+}
+
+.introSubtitle {
+    text-align: center;
+}
+

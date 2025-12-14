@@ -11,18 +11,20 @@ https://www.youtube.com/watch?v=fI9VM5zzpu8
 <head>
     <meta charset=""UTF-8>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Fiorelli Wong's Mechatronics Portfolio</title>
     <link rel="stylesheet" type="text/css" href="mech_style.css">
     <script src="mech_script.js" defer></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 
 <body>
-    <h1 class="mainTitle">Fiorelli Wong's Mechatronics Portfolio</h1>
-    <p class="introSubtitle">Welcome to my mechatronics (DSGN 297) portfolio!</p>
- 
+    <div class="header">
+        <h1 class="mainTitle">Fiorelli Wong's Mechatronics Portfolio</h1>
+        <p class="introSubtitle">Welcome to my mechatronics (DSGN 297) portfolio!</p>
+    </div>
     <div class="wrapper">
         <h2 id="tabs-title">Project Journey</h2>
+        <br>
         <div class="tabs-container">
             <ul aria-labelledby="tabs-title">
                 <li><a id="tab-1" href="#demo"> Demo </a></li>
@@ -32,10 +34,14 @@ https://www.youtube.com/watch?v=fI9VM5zzpu8
                 <li><a id="tab-5" href="#sketch"> Sketching </a></li>
             </ul>
 
-            <div class=""tabs__panels flow">
+            <div class="tabs__panels flow">
                 <div id="demo" aria-labelledby="tab-1">
                     <p>Final Demo Video and Wiring Image.</p>
-                    <iframe src="https://youtu.be/MHUbzqfUzGY" referrerpolicy="no-referrer-when-downgrade" title="final_demo">Your browser does not support iframe.</iframe>
+                    <!-- <iframe src="https://youtu.be/MHUbzqfUzGY" referrerpolicy="no-referrer-when-downgrade" title="final_demo">Your browser does not support iframe.</iframe> -->
+                     <video width="320" height="240" controls>
+                        <source src="resources/video.MOV" type="video/mov">
+                        Your browser does not support the video tag.
+                    </video>
                     <img src="resources/demo.JPG" alt="Image of final breadboard and wiring." width="300px" height ="300px">
                 </div>
                 <div id="block-diagram" aria-labelledby="tab-2">
@@ -48,7 +54,9 @@ https://www.youtube.com/watch?v=fI9VM5zzpu8
                 </div>
                 <div id="full-code" aria-labelledby="tab-4">
                     <p>Full Code of final project.</p>
-                    <iframe src="resources/code.py" title="final_code" width="1200px" height="600px">Your browser does not support iframe.</iframe>
+                    <code>
+                        <iframe src="resources/code.py" title="final_code" width="1200px" height="600px">Your browser does not support iframe.</iframe>
+                    </code>
                 </div>
                 <div id="sketch" aria-labelledby="tab-5">
                     <p>Sketch of what final project should look like.</p>
