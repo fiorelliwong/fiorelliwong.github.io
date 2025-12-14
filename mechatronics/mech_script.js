@@ -1,12 +1,20 @@
-const tabsContainer = document.querySelector(".tabs-container");
-const tabsList = tabsContainer.querySelector("ul");
-const tabsButtons = tabsList.querySelectorAll("a");
-const tabPanels = tabsContainer.querySelectorAll(".tab__panels > div");
+function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
 
-tabsButtons.forEach((tab, index) => {
-    if (index== 0){
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
 
-    } else {
-        tabPanels[index].setAttribute("hidden", "");
-    }
-});
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}

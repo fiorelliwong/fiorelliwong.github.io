@@ -2,9 +2,9 @@
 <html lang="en">
 
 <!--
-HTML code built referencing the following sources:
+HTML, JS, CSS code built referencing the following sources:
 
-Kevin Powell: Create Accessible Tabs with HTML, CSS & JS
+https://www.w3schools.com/howto/howto_js_tabs.asp
 https://www.youtube.com/watch?v=fI9VM5zzpu8
 -->
 
@@ -22,52 +22,55 @@ https://www.youtube.com/watch?v=fI9VM5zzpu8
         <h1 class="mainTitle">Fiorelli Wong's Mechatronics Portfolio</h1>
         <p class="introSubtitle">Welcome to my mechatronics (DSGN 297) portfolio!</p>
     </div>
+    <div class="mainContent">
+    <h2 class="tabsTitle">Project Journey</h2>
     <div class="wrapper">
-        <h2 id="tabs-title">Project Journey</h2>
-        <br>
-        <div class="tabs-container">
-            <ul aria-labelledby="tabs-title">
-                <li><a id="tab-1" href="#demo"> Demo </a></li>
-                <li><a id="tab-2" href="#block-diagram"> Block Diagram </a></li>
-                <li><a id="tab-3" href="#circuit-diagram"> Circuit Diagram </a></li>
-                <li><a id="tab-4" href="#full-code"> Full Code </a></li>
-                <li><a id="tab-5" href="#sketch"> Sketching </a></li>
-            </ul>
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'demo')" id="defaultOpen">Demo</button>
+            <button class="tablinks" onclick="openCity(event, 'block-diagram')">Block Diagram</button>
+            <button class="tablinks" onclick="openCity(event, 'circuit-diagram')">Circuit Diagram</button>
+            <button class="tablinks" onclick="openCity(event, 'full-code')">Full Code</button>
+            <button class="tablinks" onclick="openCity(event, 'sketch')">Sketches</button>      
+        </div>
+        <script>
+        document.getElementById("defaultOpen").click();
+        </script>
+    
+    </div>
 
             <div class="tabs__panels flow">
-                <div id="demo" aria-labelledby="tab-1">
+                <div id="demo" class="tabcontent">
                     <p>Final Demo Video and Wiring Image.</p>
                     <!-- <iframe src="https://youtu.be/MHUbzqfUzGY" referrerpolicy="no-referrer-when-downgrade" title="final_demo">Your browser does not support iframe.</iframe> -->
                      <video width="320" height="240" controls>
                         <source src="resources/video.MOV" type="video/mov">
                         Your browser does not support the video tag.
                     </video>
-                    <img src="resources/demo.JPG" alt="Image of final breadboard and wiring." width="300px" height ="300px">
+                    <img src="resources/demo.JPG" alt="Image of final breadboard and wiring.">
                 </div>
-                <div id="block-diagram" aria-labelledby="tab-2">
+                <div id="block-diagram" class="tabcontent">
                     <p>Block diagram of interactions with final project.</p>
-                    <img src="resources/block.jpg" alt="Image of block diagram" width="1200px" height="600px">
+                    <img src="resources/block.jpg" alt="Image of block diagram">
                 </div>
-                <div id="circuit-diagram" aria-labelledby="tab-3">
+                <div id="circuit-diagram" class="tabcontent">
                     <p>Circuit Diagram of final wiring.</p>
-                    <img src="resources/circuit.jpg" alt="Circuit Diagram" width="800px" height="1200px">
+                    <img src="resources/circuit.jpg" alt="Circuit Diagram">
                 </div>
-                <div id="full-code" aria-labelledby="tab-4">
+                <div id="full-code" class="tabcontent">
                     <p>Full Code of final project.</p>
                     <code>
-                        <iframe src="resources/code.py" title="final_code" width="1200px" height="600px">Your browser does not support iframe.</iframe>
+                        <iframe src="resources/code.py" title="final_code" height="600px">Your browser does not support iframe.</iframe>
                     </code>
                 </div>
-                <div id="sketch" aria-labelledby="tab-5">
+                <div id="sketch" class="tabcontent">
                     <p>Sketch of what final project should look like.</p>
-                    <img src="resources/initial.jpg" alt="Image of initial sketch" width="1000px" height="600px">
-                    <img src="resources/sketch_front.jpg" alt="Image of final sketch" width="1000px" height="800px">
+                    <img src="resources/initial.jpg" alt="Image of initial sketch">
+                    <img src="resources/sketch_front.jpg" alt="Image of final sketch">
                 </div>
             </div>
 
             
         </div>
-    </div>
 
 <!--
 An image or video of a demonstration of your device
