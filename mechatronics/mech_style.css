@@ -66,6 +66,7 @@
   line-height: 1.05;
   margin: auto;
   text-align: center;
+  margin-top: 5%;
 }
 
 /* Style the tab content */
@@ -127,6 +128,7 @@ body {
 
 .tabsSubtitle {
     margin-left: 12%;
+    margin-right: 12%;
 }
 
 
