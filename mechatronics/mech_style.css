@@ -62,7 +62,7 @@
 }
 
 .mainTitle {
-  font-size: var(--fs-900);
+  font-size: var(--fs-800);
   line-height: 1.05;
   margin: auto;
   text-align: center;
@@ -78,6 +78,8 @@
   margin-bottom: 11.5%;
   border-top: none;
   animation: fadeEffect 1s;
+  display: flex;
+  align-items: left;
 }
 
 
