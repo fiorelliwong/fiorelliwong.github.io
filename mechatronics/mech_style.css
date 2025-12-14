@@ -78,8 +78,6 @@
   margin-bottom: 11.5%;
   border-top: none;
   animation: fadeEffect 1s;
-  display: flex;
-  align-items: left;
 }
 
 
@@ -114,7 +112,7 @@ body {
 }
 
 .tabsTitle {
-  font-size: var(--fs-800);
+  font-size: var(--fs-500);
   line-height: 1.1;
   margin-left: 12%;
 }
@@ -126,4 +124,9 @@ body {
 .introSubtitle {
     text-align: center;
 }
+
+.tabsSubtitle {
+    margin-left: 12%;
+}
+
 
